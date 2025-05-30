@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasna AV - Full Stack & Flutter Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    
+    <!-- <script>
+        // Add smooth reveal animation when scrolling
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add dynamic hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `translateY(-12px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // Animate stats counter
+        function animateStats() {
+            const statsNumbers = document.querySelectorAll('.stat-number');
+            
+            statsNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+                    }
+                }, 30);
+            });
+        }
+
+        // Trigger stats animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script> -->
+    
+    <script>
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe education items
+        document.querySelectorAll('.fade-in-up').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i>&nbsp;&nbsp;Message Sent!';
+                submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 3000);
+                
+                alert('Thank you for your message! I\'ll get back to you soon.');
+            }, 2000);
+        });
+
+        // Add floating animation to contact items
+        document.querySelectorAll('.contact-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.classList.add('fade-in-up');
+        });
+
+        // Smooth form input animations
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Social links hover effect
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) rotate(5deg)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotate(0deg)';
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Jasna AV</a>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Jasna AV</h1>
+                    <p>Senior Full Stack Developer | Flutter Mobile Developer | Certified Data Science Professional</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn">Get In Touch</a>
+                        <a href="#projects" class="btn btn-outline">View Projects</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Jasna AV">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Results-driven Full Stack Developer with over 4.5 years of experience in PHP, Laravel, MySQL, and JavaScript, along with hands-on experience in Flutter and Data Science. Skilled in designing scalable web and mobile applications, RESTful API integrations, and performance optimization.</p>
+                    <p>Recently completed a certification in Data Science & Machine Learning from IIIT Kottayam. Delivered a commercial Gym Management System as a freelancer using JAVA. Successfully enhanced backend processes, reducing load time by 30% and strengthening security features, cutting vulnerabilities by 40%.</p>
+                    <p>Seeking challenging opportunities in the UAE across Full Stack, Mobile App, or Data Science roles. Available for immediate relocation and willing to take own visa.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="About Jasna">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>PHP (Core & Laravel)</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript (jQuery, AJAX)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>Bootstrap</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <ul class="skill-list">
+                        <li>Flutter</li>
+                        <li>Firebase Integration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Science & ML</h3>
+                    <ul class="skill-list">
+                        <li>Python (NumPy, Pandas, scikit-learn)</li>
+                        <li>Matplotlib, Seaborn</li>
+                        <li>Classification, Clustering</li>
+                        <li>Model Evaluation & Deployment</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Git, GitHub</li>
+                        <li>Google Colab</li>
+                        <li>XAMPP</li>
+                        <li>Agile Methodologies</li>
+                        <li>Visual Studio Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="experience-container">
+                <div class="experience-item">
+                    <span class="experience-date">2021 - Present</span>
+                    <h3 class="experience-role">Senior Full Stack (PHP+Flutter) Developer</h3>
+                    <p class="experience-company">SANS IT Consultancy, Cochin, Kerala</p>
+                    <ul class="experience-list">
+                        <li>Developed and maintained scalable PHP applications serving 100+ daily users.</li>
+                        <li>Led backend architecture design and optimized SQL queries, improving system efficiency by 30%.</li>
+                        <li>Built custom Laravel components and Drupal modules, reducing development time by 20%.</li>
+                        <li>Integrated RESTful APIs and secured authentication mechanisms, enhancing data security by 25%.</li>
+                        <li>Developed a Flutter mobile app to complement a PHP portal, increasing customer engagement by 35%.</li>
+                        <li>Spearheaded debugging and troubleshooting, reducing system downtime by 40%.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-date">2020 - 2021</span>
+                    <h3 class="experience-role">PHP Developer</h3>
+                    <p class="experience-company">MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</p>
+                    <ul class="experience-list">
+                        <li>Designed and developed web-based applications in PHP, MySQL, and JavaScript, improving system speed by 25%.</li>
+                        <li>Optimized database indexing and queries, reducing load times by 20%.</li>
+                        <li>Created secure API endpoints, leading to 30% faster integrations.</li>
+                        <li>Migrated legacy code to modern MVC frameworks, reducing maintenance efforts by 15%.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-date">2023 - Present</span>
+                    <h3 class="experience-role">Freelance Full Stack Developer</h3>
+                    <p class="experience-company">Remote</p>
+                    <ul class="experience-list">
+                        <li>Designed and deployed a Gym Management System with features for membership tracking, payments, trainer schedules, and attendance.</li>
+                        <li>Built using JAVA (Core), MySQL.</li>
+                        <li>Created admin dashboard with real-time analytics on client activity and revenue trends.</li>
+                        <li>Delivered full-stack deployment with training, and successfully sold to a local gym.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Innovative solutions combining cutting-edge technology with real-world impact</p>
+            
+            <div class="projects-grid">
+                <!-- Gym Management System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Gym Management System</h3>
+                            <div class="project-category">Full Stack Development</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">Complete solution for gym management featuring comprehensive fee tracking, trainer scheduling, membership management, and automated billing systems. Streamlined operations for fitness centers.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Full Stack</span>
+                        <span class="project-tag">Spring Boot</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- CCSIT Management System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">CCSIT Management System</h3>
+                            <div class="project-category">Enterprise Solution</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">Automated college management workflows reducing administrative workload by 40%. Features student enrollment, grade management, faculty scheduling, and comprehensive reporting systems.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">Laravel</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Bootstrap</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Stitch Online -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Stitch Online</h3>
+                            <div class="project-category">E-Commerce Platform</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">Custom e-commerce solution for boutique fashion retail, increasing conversion rates by 25%. Features inventory management, payment integration, and personalized shopping experience.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">PayPal API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Speak 2 Speakers -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Speak 2 Speakers</h3>
+                            <div class="project-category">Communication System</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">Centralized communication platform for legislative speakers, improving information flow by 30%. Real-time messaging, document sharing, and collaborative decision-making tools.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">Laravel</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">WebSocket</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Learning Disability Detection -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Learning Disability Detection</h3>
+                            <div class="project-category">Machine Learning</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">ML model using Python and scikit-learn to detect early signs of learning disabilities among students, achieving over 85% accuracy. Early intervention system for educational institutions.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">scikit-learn</span>
+                        <span class="project-tag">Pandas</span>
+                        <span class="project-tag">NumPy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Research Paper"><i class="fas fa-file-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Brain Cancer Detection -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Brain Cancer Detection</h3>
+                            <div class="project-category">Deep Learning</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">CNN-based deep learning system for detecting brain tumors from MRI scans, aimed at improving early diagnosis and treatment planning. Advanced medical imaging analysis.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">Keras</span>
+                        <span class="project-tag">OpenCV</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Model Demo"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Pulmonary Embolism Detection -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div>
+                            <h3 class="project-title">Pulmonary Embolism Detection</h3>
+                            <div class="project-category">Medical AI</div>
+                        </div>
+                    </div>
+                    <p class="project-desc">Deep learning solution using CT scan data to detect pulmonary embolism and suggest preliminary treatments based on clinical guidelines. AI-powered diagnostic assistance.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">PyTorch</span>
+                        <span class="project-tag">DICOM</span>
+                        <span class="project-tag">Medical AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Clinical Trial"><i class="fas fa-hospital"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="stats-section">
+                <h3 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Project Impact</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">ML Model Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Workflow Improvement</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Conversion Increase</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="section education">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <p class="section-subtitle">Academic excellence and professional development in computer science and emerging technologies</p>
+            
+            <div class="education-grid">
+                <!-- Formal Education -->
+                <div class="education-column">
+                    <h3><i class="fas fa-university"></i> Academic Degrees</h3>
+                    
+                    <div class="education-item fade-in-up">
+                        <div class="degree-info">
+                            <div class="degree-title">Master of Computer Applications (MCA)</div>
+                            <div class="institution">Calicut University</div>
+                            <div class="year"><i class="fas fa-calendar-alt"></i> 2019</div>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item fade-in-up">
+                        <div class="degree-info">
+                            <div class="degree-title">Bachelor of Computer Science (BSc)</div>
+                            <div class="institution">Calicut University</div>
+                            <div class="year"><i class="fas fa-calendar-alt"></i> 2015</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Certifications -->
+                <div class="education-column">
+                    <h3><i class="fas fa-certificate"></i> Professional Certifications</h3>
+                    
+                    <div class="certification-item fade-in-up">
+                        <div class="degree-info">
+                            <div class="degree-title">Data Science and Machine Learning</div>
+                            <div class="institution">Indian Institute of Information Technology (IIIT), Kottayam</div>
+                            <div class="year"><i class="fas fa-calendar-check"></i> Completed 2025</div>
+                            <div class="cert-badge">
+                                <i class="fas fa-robot"></i>
+                                Advanced ML Certification
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-item fade-in-up">
+                        <div class="degree-info">
+                            <div class="degree-title">Certified PHP Laravel Developer</div>
+                            <div class="institution">Professional Web Development</div>
+                            <div class="year"><i class="fas fa-code"></i> Framework Specialist</div>
+                            <div class="cert-badge">
+                                <i class="fab fa-laravel"></i>
+                                Laravel Expert
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-item fade-in-up">
+                        <div class="degree-info">
+                            <div class="degree-title">Java Programming Certification</div>
+                            <div class="institution">Enterprise Application Development</div>
+                            <div class="year"><i class="fas fa-coffee"></i> Core Java & Advanced</div>
+                            <div class="cert-badge">
+                                <i class="fab fa-java"></i>
+                                Java Certified
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's discuss your next project or explore collaboration opportunities</p>
+            
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Ready to bring your ideas to life with cutting-edge technology? Whether you're looking for full-stack development, machine learning solutions, or innovative web applications, I'm here to help transform your vision into reality.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:jasnaav76@gmail.com">jasnaav76@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                  
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Kerala, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Response Time</h4>
+                            <p>Usually within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/jasnaav76" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/jasnaav76" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:jasnaav76@gmail.com" class="social-link" title="Email" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
