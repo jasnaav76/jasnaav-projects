@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasna AV - Senior Full Stack Developer</title>
+    <title>Jasna AV - Senior PHP Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -99,13 +99,28 @@
 
         .hero-text h1 {
             font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
+            opacity: 0.95;
         }
 
         .hero-text p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
         }
 
         .hero-btns {
@@ -154,12 +169,6 @@
             border: 5px solid white;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             object-fit: cover;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary);
         }
 
         /* Section Styles */
@@ -186,7 +195,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items: start;
         }
 
         .about-text p {
@@ -204,6 +213,10 @@
 
         .highlight-box h3 {
             color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
             margin-bottom: 0.5rem;
         }
 
@@ -425,6 +438,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
         .contact-details h4 {
@@ -538,10 +552,15 @@
                 font-size: 2rem;
             }
 
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
             .profile-photo {
                 width: 250px;
                 height: 250px;
                 margin: 0 auto;
+                display: block;
             }
 
             .projects-grid {
@@ -576,7 +595,13 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Jasna AV</h1>
-                    <p>Senior Full Stack Developer | PHP Laravel & WordPress Expert | Flutter Mobile Developer | Certified Data Science Professional</p>
+                    <p class="hero-subtitle">Senior PHP Developer</p>
+                    <p><i class="fas fa-phone"></i> +971 581182681 | +91 9656657700</p>
+                    <p><i class="fas fa-envelope"></i> jasnaav76@gmail.com</p>
+                    <div class="hero-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Dubai, UAE</span>
+                    </div>
                     <div class="hero-btns">
                         <a href="#contact" class="btn btn-primary">Get In Touch</a>
                         <a href="#projects" class="btn btn-outline">View Projects</a>
@@ -584,7 +609,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="profile.jpg" alt="Jasna AV - Senior Full Stack Developer" class="profile-photo">
+                    <img src="profile.jpg" alt="Jasna AV - Senior PHP Developer" class="profile-photo">
                 </div>
             </div>
         </div>
@@ -593,25 +618,25 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title">Professional Summary</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p><strong>Results-driven Senior Full Stack Developer</strong> with over 4.5 years of professional experience specializing in PHP, Laravel, WordPress, MySQL, JavaScript, and Flutter mobile development. Proven track record of designing and deploying scalable web and mobile applications with exceptional performance optimization.</p>
+                    <p><strong>Senior PHP Developer with 5+ years of experience</strong> building scalable web and mobile applications for international clients and mid-sized IT consultancies. Expert in full-stack development using PHP (Laravel), JavaScript (Vue.js/React), Node.js, MySQL, and PostgreSQL.</p>
                     
-                    <div class="highlight-box">
-                        <h3>Key Achievements</h3>
-                        <p>✓ Enhanced backend processes, reducing load time by 30%<br>
-                        ✓ Strengthened security features, cutting vulnerabilities by 40%<br>
-                        ✓ Increased customer engagement by 35% through mobile app development<br>
-                        ✓ Successfully delivered commercial projects as freelancer</p>
-                    </div>
-
-                    <p>Recently completed <strong>Data Science & Machine Learning Certification from IIIT Kottayam</strong>, expanding expertise into AI/ML solutions with 85%+ model accuracy.</p>
+                    <p>Strong skills in REST/SOAP API integration, cron automation, HRMS, Payroll, and CRM solutions. Proven track record in optimizing application performance, securing web platforms, implementing CI/CD pipelines, and mentoring development teams.</p>
 
                     <div class="highlight-box">
-                        <h3>Professional Focus</h3>
-                        <p>Seeking challenging opportunities in the UAE across Full Stack Development, Mobile App Development, WordPress Development, or Data Science roles. Available for immediate relocation and willing to arrange own visa.</p>
+                        <h3>Core Expertise</h3>
+                        <p>✓ Full-stack development with Laravel, Vue.js/React, Node.js<br>
+                        ✓ HRMS, Payroll & CRM system development<br>
+                        ✓ REST/SOAP API integration & Flutter mobile backends<br>
+                        ✓ Performance optimization (30% improvement achieved)<br>
+                        ✓ CI/CD pipelines & deployment automation<br>
+                        ✓ Security audits & vulnerability management<br>
+                        ✓ Team mentorship & technical leadership</p>
                     </div>
+
+                    <p>Adept at designing responsive UIs, integrating mobile backends (Flutter), and delivering client-focused solutions that enhance productivity and reduce manual effort.</p>
 
                     <div class="cv-download">
                         <a href="Jasna_AV_CV.pdf" download class="btn"><i class="fas fa-file-pdf"></i> Download Full CV</a>
@@ -619,19 +644,26 @@
                 </div>
                 <div class="about-image">
                     <div class="highlight-box">
-                        <h3><i class="fas fa-briefcase"></i> Professional Summary</h3>
-                        <p><strong>Experience:</strong> 4.5+ Years</p>
-                        <p><strong>Location:</strong> Kerala, India</p>
+                        <h3><i class="fas fa-briefcase"></i> Current Status</h3>
+                        <p><strong>Location:</strong> Dubai, UAE</p>
+                        <p><strong>Experience:</strong> 5+ Years</p>
+                        <p><strong>Visa Status:</strong> Visit Visa</p>
+                        <p><strong>Insurance:</strong> Existing</p>
                         <p><strong>Availability:</strong> Immediate</p>
-                        <p><strong>Visa:</strong> Own arrangement</p>
-                        <p><strong>Preferred Location:</strong> UAE</p>
+                        <p><strong>Languages:</strong> English, Malayalam, Arabic</p>
                     </div>
                     
                     <div class="highlight-box" style="margin-top: 1.5rem;">
                         <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                        <p><strong>MCA</strong> - Calicut University (2019)</p>
-                        <p><strong>BSc Computer Science</strong> - Calicut University (2015)</p>
-                        <p><strong>Data Science & ML</strong> - IIIT Kottayam (2025)</p>
+                        <p><strong>MCA</strong> - University of Calicut (2019)</p>
+                        <p><strong>BSc Computer Science</strong> - University of Calicut (2015)</p>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                        <p>• Data Science & ML - IIIT Kottayam</p>
+                        <p>• Certified PHP Laravel Developer</p>
+                        <p>• Java Programming Certification</p>
                     </div>
                 </div>
             </div>
@@ -641,73 +673,113 @@
     <!-- Skills Section -->
     <section id="skills" class="section skills">
         <div class="container">
-            <h2 class="section-title">Technical Expertise</h2>
-            <p class="section-subtitle">Comprehensive skill set spanning full-stack development, mobile apps, and data science</p>
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Comprehensive expertise in full-stack development, APIs, databases, and modern frameworks</p>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3><i class="fab fa-php"></i> Backend Development</h3>
+                    <h3><i class="fab fa-php"></i> PHP & Backend</h3>
                     <ul class="skill-list">
                         <li>PHP (Core & Advanced)</li>
                         <li>Laravel Framework</li>
+                        <li>CodeIgniter</li>
                         <li>WordPress Development</li>
-                        <li>WordPress Theme Development</li>
-                        <li>WordPress Plugin Development</li>
-                        <li>WooCommerce</li>
                         <li>RESTful API Development</li>
-                        <li>Drupal Modules</li>
+                        <li>SOAP API Integration</li>
+                        <li>Cron Job Automation</li>
                     </ul>
                 </div>
+
                 <div class="skill-category">
                     <h3><i class="fas fa-code"></i> Frontend Development</h3>
                     <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
+                        <li>Vue.js</li>
+                        <li>React</li>
                         <li>JavaScript (ES6+)</li>
                         <li>jQuery & AJAX</li>
+                        <li>HTML5 & CSS3</li>
                         <li>Bootstrap Framework</li>
-                        <li>Responsive Web Design</li>
-                        <li>WordPress Theme Customization</li>
+                        <li>Responsive Design</li>
                     </ul>
                 </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend Technologies</h3>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>Python</li>
+                        <li>C Programming</li>
+                        <li>C++ Programming</li>
+                        <li>API Development</li>
+                        <li>Microservices</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Database Management</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>Database Optimization</li>
+                        <li>Query Performance Tuning</li>
+                        <li>Schema Design</li>
+                        <li>Data Migration</li>
+                    </ul>
+                </div>
+
                 <div class="skill-category">
                     <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
                     <ul class="skill-list">
                         <li>Flutter Framework</li>
-                        <li>Dart Programming</li>
-                        <li>Firebase Integration</li>
+                        <li>Mobile Backend Integration</li>
                         <li>Cross-platform Development</li>
-                        <li>Mobile UI/UX</li>
+                        <li>Real-time Synchronization</li>
+                        <li>Mobile API Design</li>
                     </ul>
                 </div>
+
                 <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Database & CMS</h3>
+                    <h3><i class="fas fa-briefcase"></i> Enterprise Solutions</h3>
                     <ul class="skill-list">
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>WordPress CMS</li>
-                        <li>Database Optimization</li>
-                        <li>Query Performance Tuning</li>
+                        <li>HRMS Development</li>
+                        <li>Payroll Systems</li>
+                        <li>CRM Solutions</li>
+                        <li>Attendance Tracking</li>
+                        <li>Leave Management</li>
+                        <li>Employee Portals</li>
                     </ul>
                 </div>
+
                 <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> Data Science & ML</h3>
-                    <ul class="skill-list">
-                        <li>Python (NumPy, Pandas)</li>
-                        <li>scikit-learn</li>
-                        <li>TensorFlow & Keras</li>
-                        <li>Matplotlib & Seaborn</li>
-                        <li>Classification & Clustering</li>
-                        <li>Model Deployment</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                    <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
                     <ul class="skill-list">
                         <li>Git & GitHub</li>
-                        <li>Visual Studio Code</li>
-                        <li>XAMPP & LAMP</li>
+                        <li>GitLab</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Docker</li>
+                        <li>Linux Administration</li>
                         <li>Agile Methodologies</li>
-                        <li>Google Colab</li>
-                        <li>Postman API Testing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Security & Performance</h3>
+                    <ul class="skill-list">
+                        <li>Security Audits</li>
+                        <li>Data Validation</li>
+                        <li>Vulnerability Fixing</li>
+                        <li>Performance Optimization</li>
+                        <li>Load Testing</li>
+                        <li>Code Reviews</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-credit-card"></i> Payment Integration</h3>
+                    <ul class="skill-list">
+                        <li>Razorpay Integration</li>
+                        <li>PayPal Integration</li>
+                        <li>Payment Gateway Security</li>
+                        <li>Transaction Processing</li>
                     </ul>
                 </div>
             </div>
@@ -720,41 +792,43 @@
             <h2 class="section-title">Professional Experience</h2>
             <div class="experience-container">
                 <div class="experience-item">
-                    <span class="experience-date">2021 - Present</span>
-                    <h3 class="experience-role">Senior Full Stack (PHP+Flutter) Developer</h3>
-                    <p class="experience-company">SANS IT Consultancy, Cochin, Kerala</p>
-                    <ul class="experience-list">
-                        <li>Developed and maintained scalable PHP/Laravel applications serving 100+ daily users</li>
-                        <li>Created custom WordPress themes and plugins for enterprise clients</li>
-                        <li>Led backend architecture design and optimized SQL queries, improving efficiency by 30%</li>
-                        <li>Built custom Laravel components and Drupal modules, reducing development time by 20%</li>
-                        <li>Integrated RESTful APIs and secured authentication mechanisms, enhancing security by 25%</li>
-                        <li>Developed Flutter mobile app complementing PHP portal, increasing engagement by 35%</li>
-                        <li>Spearheaded debugging and troubleshooting, reducing system downtime by 40%</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-date">2020 - 2021</span>
-                    <h3 class="experience-role">PHP Developer</h3>
-                    <p class="experience-company">MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</p>
-                    <ul class="experience-list">
-                        <li>Designed and developed web applications in PHP, MySQL, and JavaScript</li>
-                        <li>Optimized database indexing and queries, reducing load times by 20%</li>
-                        <li>Created secure API endpoints, leading to 30% faster integrations</li>
-                        <li>Migrated legacy code to modern MVC frameworks, reducing maintenance by 15%</li>
-                        <li>Improved system speed by 25% through performance optimization</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-date">2023 - Present</span>
+                    <span class="experience-date">June 2023 - Present</span>
                     <h3 class="experience-role">Freelance Full Stack Developer</h3>
                     <p class="experience-company">Remote</p>
                     <ul class="experience-list">
-                        <li>Designed and deployed commercial Gym Management System with membership tracking, payments, trainer schedules, and attendance</li>
-                        <li>Built using JAVA (Core) and MySQL with admin dashboard featuring real-time analytics</li>
-                        <li>Developed custom WordPress websites for small businesses</li>
-                        <li>Created WooCommerce e-commerce solutions with payment gateway integration</li>
-                        <li>Delivered full-stack deployment with client training and ongoing support</li>
+                        <li>Delivered full-stack web applications using Laravel, Vue.js/React, WordPress, and MySQL, improving client operational efficiency and reducing time-to-market by up to 20%</li>
+                        <li>Built responsive, mobile-first UIs integrated with scalable backend services, enhancing cross-platform user experience and engagement</li>
+                        <li>Implemented CI/CD pipelines and Git version control, increasing deployment reliability and reducing release errors by 30%</li>
+                        <li>Conducted security audits and performance tuning, achieving near 99.9% uptime and robust data protection for clients</li>
+                        <li>Managed end-to-end project lifecycle, including architecture design, coding, testing, and deployment, ensuring on-time delivery of all projects</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <span class="experience-date">January 2021 - Present</span>
+                    <h3 class="experience-role">Senior PHP Developer</h3>
+                    <p class="experience-company">Sans IT Consultancy, Cochin, Kerala</p>
+                    <ul class="experience-list">
+                        <li>Engineered custom HRMS, Payroll, and CRM platforms automating leave allotment, salary processing, and attendance tracking via cron jobs, streamlining HR operations and saving over 150 man-hours monthly</li>
+                        <li>Optimized SQL queries and refactored backend code, achieving up to 30% improvement in application performance</li>
+                        <li>Integrated third-party REST/SOAP APIs and Flutter mobile backend for seamless cross-platform data synchronization, reducing manual data entry by 40%</li>
+                        <li>Developed employee management modules including leave, shift scheduling, and tracking, enhancing operational efficiency and reducing administrative errors by 25%</li>
+                        <li>Identified and resolved security vulnerabilities through rigorous testing and data validation, ensuring compliance with industry best practices</li>
+                        <li>Mentored junior developers and conducted technical workshops, improving team proficiency and accelerating project delivery timelines</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <span class="experience-date">January 2020 - January 2021</span>
+                    <h3 class="experience-role">PHP Developer</h3>
+                    <p class="experience-company">MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</p>
+                    <ul class="experience-list">
+                        <li>Developed internal and client-facing web applications using Core PHP, CodeIgniter, and MySQL, enhancing reporting accuracy and operational workflow</li>
+                        <li>Built HR modules for employee management, leave tracking, and attendance, reducing administrative workload by 20%</li>
+                        <li>Collaborated with UI/UX teams to design responsive, user-friendly interfaces using HTML, CSS, JavaScript, and jQuery, improving user engagement and satisfaction</li>
+                        <li>Integrated payment gateways (Razorpay, PayPal) for secure, seamless financial transactions, increasing payment completion rates by 15%</li>
+                        <li>Performed unit testing, debugging, and troubleshooting to ensure application stability, reliability, and high-quality delivery standards</li>
+                        <li>Participated in code reviews and maintained comprehensive project documentation, supporting knowledge transfer and maintaining development best practices</li>
                     </ul>
                 </div>
             </div>
@@ -765,34 +839,21 @@
     <section id="projects" class="section projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Innovative solutions combining cutting-edge technology with real-world impact</p>
+            <p class="section-subtitle">Enterprise solutions and scalable applications delivered for clients</p>
             
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">
-                        <i class="fas fa-dumbbell"></i>
+                        <i class="fas fa-users-cog"></i>
                     </div>
-                    <h3 class="project-title">Gym Management System</h3>
-                    <div class="project-category">Full Stack Development</div>
-                    <p class="project-desc">Commercial solution for gym management featuring comprehensive fee tracking, trainer scheduling, membership management, and automated billing systems.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Java</span>
-                        <span class="project-tag">MySQL</span>
-                        <span class="project-tag">Full Stack</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="project-title">CCSIT Management System</h3>
-                    <div class="project-category">Enterprise Solution</div>
-                    <p class="project-desc">Automated college management workflows reducing administrative workload by 40%. Features enrollment, grade management, faculty scheduling, and reporting.</p>
+                    <h3 class="project-title">HRMS System</h3>
+                    <div class="project-category">Enterprise HR Solution</div>
+                    <p class="project-desc">Comprehensive HRMS platform automating HR workflows including payroll processing, attendance tracking, leave management, and employee scheduling. Saved 150+ man-hours monthly.</p>
                     <div class="project-tags">
                         <span class="project-tag">PHP</span>
                         <span class="project-tag">Laravel</span>
                         <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Cron Jobs</span>
                     </div>
                 </div>
 
