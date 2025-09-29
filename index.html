@@ -1,183 +1,554 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasna AV - Full Stack & Flutter Developer</title>
+    <title>Jasna AV - Senior Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
-    
-    <!-- <script>
-        // Add smooth reveal animation when scrolling
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Add dynamic hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `translateY(-12px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
-            });
-        });
-
-        // Animate stats counter
-        function animateStats() {
-            const statsNumbers = document.querySelectorAll('.stat-number');
-            
-            statsNumbers.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                const increment = target / 50;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
-                    }
-                }, 30);
-            });
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        // Trigger stats animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats-section');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #1a202c;
+            --light: #f7fafc;
+            --text: #2d3748;
+            --border: #e2e8f0;
         }
-    </script> -->
-    
-    <script>
-        // Animation observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
 
-        // Observe education items
-        document.querySelectorAll('.fade-in-up').forEach(item => {
-            observer.observe(item);
-        });
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            object-fit: cover;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-download {
+            margin-top: 2rem;
+        }
+
+        .cv-download .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: white;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .experience-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .experience-role {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--dark);
+        }
+
+        .experience-company {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .experience-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-category {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tag {
+            background: white;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .contact .section-title,
+        .contact .section-subtitle {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            align-items: start;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
-            
-            // Simulate form submission
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i>&nbsp;&nbsp;Message Sent!';
-                submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                }, 3000);
-                
-                alert('Thank you for your message! I\'ll get back to you soon.');
-            }, 2000);
-        });
 
-        // Add floating animation to contact items
-        document.querySelectorAll('.contact-item').forEach((item, index) => {
-            item.style.animationDelay = `${index * 0.1}s`;
-            item.classList.add('fade-in-up');
-        });
+            .hamburger {
+                display: block;
+            }
 
-        // Smooth form input animations
-        document.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'translateY(-2px)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'translateY(0)';
-            });
-        });
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
 
-        // Social links hover effect
-        document.querySelectorAll('.social-link').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px) rotate(5deg)';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) rotate(0deg)';
-            });
-        });
-    </script>
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .profile-photo {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -193,7 +564,6 @@
                     <a href="#skills">Skills</a>
                     <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
-                    <a href="#education">Education</a>
                     <a href="#contact">Contact</a>
                 </div>
             </nav>
@@ -206,14 +576,15 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Jasna AV</h1>
-                    <p>Senior Full Stack Developer | Flutter Mobile Developer | Certified Data Science Professional</p>
+                    <p>Senior Full Stack Developer | PHP Laravel & WordPress Expert | Flutter Mobile Developer | Certified Data Science Professional</p>
                     <div class="hero-btns">
-                        <a href="#contact" class="btn">Get In Touch</a>
+                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
                         <a href="#projects" class="btn btn-outline">View Projects</a>
+                        <a href="Jasna_AV_CV.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="/api/placeholder/400/400" alt="Jasna AV">
+                    <img src="profile.jpg" alt="Jasna AV - Senior Full Stack Developer" class="profile-photo">
                 </div>
             </div>
         </div>
@@ -225,12 +596,43 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Results-driven Full Stack Developer with over 4.5 years of experience in PHP, Laravel, MySQL, and JavaScript, along with hands-on experience in Flutter and Data Science. Skilled in designing scalable web and mobile applications, RESTful API integrations, and performance optimization.</p>
-                    <p>Recently completed a certification in Data Science & Machine Learning from IIIT Kottayam. Delivered a commercial Gym Management System as a freelancer using JAVA. Successfully enhanced backend processes, reducing load time by 30% and strengthening security features, cutting vulnerabilities by 40%.</p>
-                    <p>Seeking challenging opportunities in the UAE across Full Stack, Mobile App, or Data Science roles. Available for immediate relocation and willing to take own visa.</p>
+                    <p><strong>Results-driven Senior Full Stack Developer</strong> with over 4.5 years of professional experience specializing in PHP, Laravel, WordPress, MySQL, JavaScript, and Flutter mobile development. Proven track record of designing and deploying scalable web and mobile applications with exceptional performance optimization.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Key Achievements</h3>
+                        <p>✓ Enhanced backend processes, reducing load time by 30%<br>
+                        ✓ Strengthened security features, cutting vulnerabilities by 40%<br>
+                        ✓ Increased customer engagement by 35% through mobile app development<br>
+                        ✓ Successfully delivered commercial projects as freelancer</p>
+                    </div>
+
+                    <p>Recently completed <strong>Data Science & Machine Learning Certification from IIIT Kottayam</strong>, expanding expertise into AI/ML solutions with 85%+ model accuracy.</p>
+
+                    <div class="highlight-box">
+                        <h3>Professional Focus</h3>
+                        <p>Seeking challenging opportunities in the UAE across Full Stack Development, Mobile App Development, WordPress Development, or Data Science roles. Available for immediate relocation and willing to arrange own visa.</p>
+                    </div>
+
+                    <div class="cv-download">
+                        <a href="Jasna_AV_CV.pdf" download class="btn"><i class="fas fa-file-pdf"></i> Download Full CV</a>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="/api/placeholder/500/300" alt="About Jasna">
+                    <div class="highlight-box">
+                        <h3><i class="fas fa-briefcase"></i> Professional Summary</h3>
+                        <p><strong>Experience:</strong> 4.5+ Years</p>
+                        <p><strong>Location:</strong> Kerala, India</p>
+                        <p><strong>Availability:</strong> Immediate</p>
+                        <p><strong>Visa:</strong> Own arrangement</p>
+                        <p><strong>Preferred Location:</strong> UAE</p>
+                    </div>
+                    
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <p><strong>MCA</strong> - Calicut University (2019)</p>
+                        <p><strong>BSc Computer Science</strong> - Calicut University (2015)</p>
+                        <p><strong>Data Science & ML</strong> - IIIT Kottayam (2025)</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -239,57 +641,73 @@
     <!-- Skills Section -->
     <section id="skills" class="section skills">
         <div class="container">
-            <h2 class="section-title">My Skills</h2>
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">Comprehensive skill set spanning full-stack development, mobile apps, and data science</p>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
+                    <h3><i class="fab fa-php"></i> Backend Development</h3>
                     <ul class="skill-list">
-                        <li>PHP (Core & Laravel)</li>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>JavaScript (jQuery, AJAX)</li>
+                        <li>PHP (Core & Advanced)</li>
+                        <li>Laravel Framework</li>
+                        <li>WordPress Development</li>
+                        <li>WordPress Theme Development</li>
+                        <li>WordPress Plugin Development</li>
+                        <li>WooCommerce</li>
+                        <li>RESTful API Development</li>
+                        <li>Drupal Modules</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Frontend Development</h3>
+                    <h3><i class="fas fa-code"></i> Frontend Development</h3>
                     <ul class="skill-list">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>Bootstrap</li>
-                        <li>JavaScript</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>jQuery & AJAX</li>
+                        <li>Bootstrap Framework</li>
+                        <li>Responsive Web Design</li>
+                        <li>WordPress Theme Customization</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Mobile Development</h3>
+                    <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
                     <ul class="skill-list">
-                        <li>Flutter</li>
+                        <li>Flutter Framework</li>
+                        <li>Dart Programming</li>
                         <li>Firebase Integration</li>
+                        <li>Cross-platform Development</li>
+                        <li>Mobile UI/UX</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Databases</h3>
+                    <h3><i class="fas fa-database"></i> Database & CMS</h3>
                     <ul class="skill-list">
                         <li>MySQL</li>
                         <li>PostgreSQL</li>
+                        <li>WordPress CMS</li>
+                        <li>Database Optimization</li>
+                        <li>Query Performance Tuning</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Data Science & ML</h3>
+                    <h3><i class="fas fa-robot"></i> Data Science & ML</h3>
                     <ul class="skill-list">
-                        <li>Python (NumPy, Pandas, scikit-learn)</li>
-                        <li>Matplotlib, Seaborn</li>
-                        <li>Classification, Clustering</li>
-                        <li>Model Evaluation & Deployment</li>
+                        <li>Python (NumPy, Pandas)</li>
+                        <li>scikit-learn</li>
+                        <li>TensorFlow & Keras</li>
+                        <li>Matplotlib & Seaborn</li>
+                        <li>Classification & Clustering</li>
+                        <li>Model Deployment</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Tools & Platforms</h3>
+                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
                     <ul class="skill-list">
-                        <li>Git, GitHub</li>
-                        <li>Google Colab</li>
-                        <li>XAMPP</li>
-                        <li>Agile Methodologies</li>
+                        <li>Git & GitHub</li>
                         <li>Visual Studio Code</li>
+                        <li>XAMPP & LAMP</li>
+                        <li>Agile Methodologies</li>
+                        <li>Google Colab</li>
+                        <li>Postman API Testing</li>
                     </ul>
                 </div>
             </div>
@@ -299,19 +717,20 @@
     <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Work Experience</h2>
+            <h2 class="section-title">Professional Experience</h2>
             <div class="experience-container">
                 <div class="experience-item">
                     <span class="experience-date">2021 - Present</span>
                     <h3 class="experience-role">Senior Full Stack (PHP+Flutter) Developer</h3>
                     <p class="experience-company">SANS IT Consultancy, Cochin, Kerala</p>
                     <ul class="experience-list">
-                        <li>Developed and maintained scalable PHP applications serving 100+ daily users.</li>
-                        <li>Led backend architecture design and optimized SQL queries, improving system efficiency by 30%.</li>
-                        <li>Built custom Laravel components and Drupal modules, reducing development time by 20%.</li>
-                        <li>Integrated RESTful APIs and secured authentication mechanisms, enhancing data security by 25%.</li>
-                        <li>Developed a Flutter mobile app to complement a PHP portal, increasing customer engagement by 35%.</li>
-                        <li>Spearheaded debugging and troubleshooting, reducing system downtime by 40%.</li>
+                        <li>Developed and maintained scalable PHP/Laravel applications serving 100+ daily users</li>
+                        <li>Created custom WordPress themes and plugins for enterprise clients</li>
+                        <li>Led backend architecture design and optimized SQL queries, improving efficiency by 30%</li>
+                        <li>Built custom Laravel components and Drupal modules, reducing development time by 20%</li>
+                        <li>Integrated RESTful APIs and secured authentication mechanisms, enhancing security by 25%</li>
+                        <li>Developed Flutter mobile app complementing PHP portal, increasing engagement by 35%</li>
+                        <li>Spearheaded debugging and troubleshooting, reducing system downtime by 40%</li>
                     </ul>
                 </div>
                 <div class="experience-item">
@@ -319,10 +738,11 @@
                     <h3 class="experience-role">PHP Developer</h3>
                     <p class="experience-company">MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</p>
                     <ul class="experience-list">
-                        <li>Designed and developed web-based applications in PHP, MySQL, and JavaScript, improving system speed by 25%.</li>
-                        <li>Optimized database indexing and queries, reducing load times by 20%.</li>
-                        <li>Created secure API endpoints, leading to 30% faster integrations.</li>
-                        <li>Migrated legacy code to modern MVC frameworks, reducing maintenance efforts by 15%.</li>
+                        <li>Designed and developed web applications in PHP, MySQL, and JavaScript</li>
+                        <li>Optimized database indexing and queries, reducing load times by 20%</li>
+                        <li>Created secure API endpoints, leading to 30% faster integrations</li>
+                        <li>Migrated legacy code to modern MVC frameworks, reducing maintenance by 15%</li>
+                        <li>Improved system speed by 25% through performance optimization</li>
                     </ul>
                 </div>
                 <div class="experience-item">
@@ -330,345 +750,112 @@
                     <h3 class="experience-role">Freelance Full Stack Developer</h3>
                     <p class="experience-company">Remote</p>
                     <ul class="experience-list">
-                        <li>Designed and deployed a Gym Management System with features for membership tracking, payments, trainer schedules, and attendance.</li>
-                        <li>Built using JAVA (Core), MySQL.</li>
-                        <li>Created admin dashboard with real-time analytics on client activity and revenue trends.</li>
-                        <li>Delivered full-stack deployment with training, and successfully sold to a local gym.</li>
+                        <li>Designed and deployed commercial Gym Management System with membership tracking, payments, trainer schedules, and attendance</li>
+                        <li>Built using JAVA (Core) and MySQL with admin dashboard featuring real-time analytics</li>
+                        <li>Developed custom WordPress websites for small businesses</li>
+                        <li>Created WooCommerce e-commerce solutions with payment gateway integration</li>
+                        <li>Delivered full-stack deployment with client training and ongoing support</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Innovative solutions combining cutting-edge technology with real-world impact</p>
             
             <div class="projects-grid">
-                <!-- Gym Management System -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Gym Management System</h3>
-                            <div class="project-category">Full Stack Development</div>
-                        </div>
+                    <div class="project-icon">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
-                    <p class="project-desc">Complete solution for gym management featuring comprehensive fee tracking, trainer scheduling, membership management, and automated billing systems. Streamlined operations for fitness centers.</p>
+                    <h3 class="project-title">Gym Management System</h3>
+                    <div class="project-category">Full Stack Development</div>
+                    <p class="project-desc">Commercial solution for gym management featuring comprehensive fee tracking, trainer scheduling, membership management, and automated billing systems.</p>
                     <div class="project-tags">
                         <span class="project-tag">Java</span>
                         <span class="project-tag">MySQL</span>
                         <span class="project-tag">Full Stack</span>
-                        <span class="project-tag">Spring Boot</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
 
-                <!-- CCSIT Management System -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">CCSIT Management System</h3>
-                            <div class="project-category">Enterprise Solution</div>
-                        </div>
+                    <div class="project-icon">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <p class="project-desc">Automated college management workflows reducing administrative workload by 40%. Features student enrollment, grade management, faculty scheduling, and comprehensive reporting systems.</p>
+                    <h3 class="project-title">CCSIT Management System</h3>
+                    <div class="project-category">Enterprise Solution</div>
+                    <p class="project-desc">Automated college management workflows reducing administrative workload by 40%. Features enrollment, grade management, faculty scheduling, and reporting.</p>
                     <div class="project-tags">
                         <span class="project-tag">PHP</span>
                         <span class="project-tag">Laravel</span>
                         <span class="project-tag">MySQL</span>
-                        <span class="project-tag">Bootstrap</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
 
-                <!-- Stitch Online -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Stitch Online</h3>
-                            <div class="project-category">E-Commerce Platform</div>
-                        </div>
+                    <div class="project-icon">
+                        <i class="fab fa-wordpress"></i>
                     </div>
-                    <p class="project-desc">Custom e-commerce solution for boutique fashion retail, increasing conversion rates by 25%. Features inventory management, payment integration, and personalized shopping experience.</p>
+                    <h3 class="project-title">WordPress E-Commerce Sites</h3>
+                    <div class="project-category">CMS Development</div>
+                    <p class="project-desc">Custom WordPress and WooCommerce solutions for multiple clients. Including theme customization, plugin development, and payment gateway integration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">WordPress</span>
+                        <span class="project-tag">WooCommerce</span>
+                        <span class="project-tag">PHP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="project-title">Stitch Online</h3>
+                    <div class="project-category">E-Commerce Platform</div>
+                    <p class="project-desc">Custom e-commerce solution for boutique fashion retail, increasing conversion rates by 25%. Features inventory management and payment integration.</p>
                     <div class="project-tags">
                         <span class="project-tag">PHP</span>
                         <span class="project-tag">JavaScript</span>
                         <span class="project-tag">MySQL</span>
-                        <span class="project-tag">PayPal API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
 
-                <!-- Speak 2 Speakers -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Speak 2 Speakers</h3>
-                            <div class="project-category">Communication System</div>
-                        </div>
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <p class="project-desc">Centralized communication platform for legislative speakers, improving information flow by 30%. Real-time messaging, document sharing, and collaborative decision-making tools.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">PHP</span>
-                        <span class="project-tag">Laravel</span>
-                        <span class="project-tag">MySQL</span>
-                        <span class="project-tag">WebSocket</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <!-- Learning Disability Detection -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Learning Disability Detection</h3>
-                            <div class="project-category">Machine Learning</div>
-                        </div>
-                    </div>
-                    <p class="project-desc">ML model using Python and scikit-learn to detect early signs of learning disabilities among students, achieving over 85% accuracy. Early intervention system for educational institutions.</p>
+                    <h3 class="project-title">Learning Disability Detection</h3>
+                    <div class="project-category">Machine Learning</div>
+                    <p class="project-desc">ML model using Python and scikit-learn to detect early signs of learning disabilities, achieving over 85% accuracy.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">scikit-learn</span>
-                        <span class="project-tag">Pandas</span>
-                        <span class="project-tag">NumPy</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Research Paper"><i class="fas fa-file-alt"></i></a>
+                        <span class="project-tag">ML</span>
                     </div>
                 </div>
 
-                <!-- Brain Cancer Detection -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Brain Cancer Detection</h3>
-                            <div class="project-category">Deep Learning</div>
-                        </div>
+                    <div class="project-icon">
+                        <i class="fas fa-lungs"></i>
                     </div>
-                    <p class="project-desc">CNN-based deep learning system for detecting brain tumors from MRI scans, aimed at improving early diagnosis and treatment planning. Advanced medical imaging analysis.</p>
+                    <h3 class="project-title">Medical AI Solutions</h3>
+                    <div class="project-category">Deep Learning</div>
+                    <p class="project-desc">Deep learning solutions for medical imaging including brain tumor and pulmonary embolism detection from MRI and CT scans.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">TensorFlow</span>
-                        <span class="project-tag">Keras</span>
-                        <span class="project-tag">OpenCV</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Model Demo"><i class="fas fa-play"></i></a>
-                    </div>
-                </div>
-
-                <!-- Pulmonary Embolism Detection -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-lungs"></i>
-                        </div>
-                        <div>
-                            <h3 class="project-title">Pulmonary Embolism Detection</h3>
-                            <div class="project-category">Medical AI</div>
-                        </div>
-                    </div>
-                    <p class="project-desc">Deep learning solution using CT scan data to detect pulmonary embolism and suggest preliminary treatments based on clinical guidelines. AI-powered diagnostic assistance.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">PyTorch</span>
-                        <span class="project-tag">DICOM</span>
                         <span class="project-tag">Medical AI</span>
                     </div>
-                    <div class="project-links">
-                        <a href="#" title="View Code"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Clinical Trial"><i class="fas fa-hospital"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Statistics Section -->
-            <div class="stats-section">
-                <h3 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Project Impact</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">7+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">85%</div>
-                        <div class="stat-label">ML Model Accuracy</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">40%</div>
-                        <div class="stat-label">Workflow Improvement</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25%</div>
-                        <div class="stat-label">Conversion Increase</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Education Section -->
-    <section id="education" class="section education">
-        <div class="container">
-            <h2 class="section-title">Education & Certifications</h2>
-            <p class="section-subtitle">Academic excellence and professional development in computer science and emerging technologies</p>
-            
-            <div class="education-grid">
-                <!-- Formal Education -->
-                <div class="education-column">
-                    <h3><i class="fas fa-university"></i> Academic Degrees</h3>
-                    
-                    <div class="education-item fade-in-up">
-                        <div class="degree-info">
-                            <div class="degree-title">Master of Computer Applications (MCA)</div>
-                            <div class="institution">Calicut University</div>
-                            <div class="year"><i class="fas fa-calendar-alt"></i> 2019</div>
-                        </div>
-                    </div>
-                    
-                    <div class="education-item fade-in-up">
-                        <div class="degree-info">
-                            <div class="degree-title">Bachelor of Computer Science (BSc)</div>
-                            <div class="institution">Calicut University</div>
-                            <div class="year"><i class="fas fa-calendar-alt"></i> 2015</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Professional Certifications -->
-                <div class="education-column">
-                    <h3><i class="fas fa-certificate"></i> Professional Certifications</h3>
-                    
-                    <div class="certification-item fade-in-up">
-                        <div class="degree-info">
-                            <div class="degree-title">Data Science and Machine Learning</div>
-                            <div class="institution">Indian Institute of Information Technology (IIIT), Kottayam</div>
-                            <div class="year"><i class="fas fa-calendar-check"></i> Completed 2025</div>
-                            <div class="cert-badge">
-                                <i class="fas fa-robot"></i>
-                                Advanced ML Certification
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="certification-item fade-in-up">
-                        <div class="degree-info">
-                            <div class="degree-title">Certified PHP Laravel Developer</div>
-                            <div class="institution">Professional Web Development</div>
-                            <div class="year"><i class="fas fa-code"></i> Framework Specialist</div>
-                            <div class="cert-badge">
-                                <i class="fab fa-laravel"></i>
-                                Laravel Expert
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="certification-item fade-in-up">
-                        <div class="degree-info">
-                            <div class="degree-title">Java Programming Certification</div>
-                            <div class="institution">Enterprise Application Development</div>
-                            <div class="year"><i class="fas fa-coffee"></i> Core Java & Advanced</div>
-                            <div class="cert-badge">
-                                <i class="fab fa-java"></i>
-                                Java Certified
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Let's discuss your next project or explore collaboration opportunities</p>
-            
-            <div class="contact-content">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Ready to bring your ideas to life with cutting-edge technology? Whether you're looking for full-stack development, machine learning solutions, or innovative web applications, I'm here to help transform your vision into reality.</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p><a href="mailto:jasnaav76@gmail.com">jasnaav76@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                  
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Kerala, India</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Response Time</h4>
-                            <p>Usually within 24 hours</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Social Links -->
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/jasnaav76" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/jasnaav76" class="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:jasnaav76@gmail.com" class="social-link" title="Email" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Contact Form -->
+   <!-- Contact Form -->
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
