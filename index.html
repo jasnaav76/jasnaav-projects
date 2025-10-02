@@ -3,949 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasna AV - Senior PHP Developer</title>
+    <title>Jasna AV - Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --dark: #1a202c;
-            --light: #f7fafc;
-            --text: #2d3748;
-            --border: #e2e8f0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 80px 0;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .hero-location {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
-        }
-
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .profile-photo {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            object-fit: cover;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #718096;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-
-        .highlight-box h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box p {
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-download {
-            margin-top: 2rem;
-        }
-
-        .cv-download .btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: white;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list li:before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Experience Section */
-        .experience-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .experience-item {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .experience-date {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .experience-role {
-            font-size: 1.5rem;
-            margin: 0.5rem 0;
-            color: var(--dark);
-        }
-
-        .experience-company {
-            color: #718096;
-            margin-bottom: 1rem;
-        }
-
-        .experience-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .experience-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .experience-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
-        /* Projects Section */
-        .projects {
-            background: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .project-card {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
-        }
-
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .project-category {
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-desc {
-            color: #718096;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .project-tag {
-            background: white;
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid var(--border);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-
-        .contact .section-title,
-        .contact .section-subtitle {
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1rem;
-            margin: 1.5rem 0;
-            align-items: start;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details h4 {
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-details a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero-content,
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .profile-photo {
-                width: 250px;
-                height: 250px;
-                margin: 0 auto;
-                display: block;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">Jasna AV</a>
-                <button class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </nav>
+    <!-- Mobile Nav Toggle Button -->
+    <button class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Header/Sidebar -->
+    <header id="header">
+        <div class="profile">
+            <img src="profile.jpg" alt="Jasna AV">
+            <h1>Jasna AV</h1>
+            <div class="social-links">
+                <!-- <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a> -->
+                <a href="https://www.linkedin.com/in/jasnaav76"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jasnaav76"><i class="fab fa-github"></i></a>
+            </div>
         </div>
+
+        <nav id="navbar">
+            <ul>
+                <li><a href="#hero" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> <span>About</span></a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> <span>Skills</span></a></li>                <li><a href="#resume"><i class="fas fa-file-alt"></i> <span>Resume</span></a></li>
+                <li><a href="#portfolio"><i class="fas fa-briefcase"></i> <span>Projects</span></a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Jasna AV</h1>
-                    <p class="hero-subtitle">Senior PHP Developer</p>
-                    <p><i class="fas fa-phone"></i> +971 581182681 | +91 9656657700</p>
-                    <p><i class="fas fa-envelope"></i> jasnaav76@gmail.com</p>
-                    <div class="hero-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Dubai, UAE</span>
+    <!-- Main Content -->
+    <div id="main">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-container">
+                <h1>Jasna AV</h1>
+                <p>I'm <span>Full Stack Developer</span></p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About</h2>
+                    <p>Full Stack Developer with 5+ years of experience building scalable web and mobile applications</p>
+                </div>
+
+                <div class="about-content">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=800&fit=crop" alt="About">
                     </div>
-                    <div class="hero-btns">
-                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                        <a href="#projects" class="btn btn-outline">View Projects</a>
-                        <a href="Jasna_AV_CV.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
+                    <div class="about-info">
+                        <h3>Senior PHP Developer &amp; Full Stack Engineer</h3>
+                        <p>
+                            Experienced developer specializing in PHP, Laravel, and modern web technologies. Expert in building enterprise solutions including HRMS, Payroll, CRM systems, and mobile applications. Proven track record in optimizing application performance and delivering scalable solutions.
+                        </p>
+                        <ul>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Phone:</strong> +971 581182681 / +91 9656657700</li>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Location:</strong> Dubai, UAE</li>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Email:</strong> jasnaav76@gmail.com</li>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Degree:</strong> MCA, BSc Computer Science</li>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Visa Status:</strong> Visit Visa (UAE)</li>
+                            <li><i class="fas fa-chevron-right"></i> <strong>Availability:</strong> Immediate</li>
+                        </ul>
+                        <p style="margin-top: 20px;">
+                            Strong skills in REST/SOAP API integration, cron automation, Flutter mobile development, and CI/CD pipelines. Passionate about mentoring teams and delivering client-focused solutions that enhance productivity.
+                        </p>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="profile.jpg" alt="Jasna AV - Senior PHP Developer" class="profile-photo">
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Skills</h2>
+                    <p>Comprehensive expertise in full-stack development and enterprise solutions</p>
+                </div>
+
+                <div class="skills-content">
+                    <div class="skill-box">
+                        <i class="fab fa-php"></i>
+                        <h4>PHP & Backend</h4>
+                        <ul>
+                            <li>PHP (Core & Advanced)</li>
+                            <li>Laravel Framework</li>
+                            <li>CodeIgniter</li>
+                            <li>WordPress</li>
+                            <li>REST/SOAP APIs</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-box">
+                        <i class="fab fa-js"></i>
+                        <h4>Frontend Development</h4>
+                        <ul>
+                            <li>Vue.js & React</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>Bootstrap</li>
+                            <li>jQuery & AJAX</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-box">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile Development</h4>
+                        <ul>
+                            <li>Flutter Framework</li>
+                            <li>iOS & Android</li>
+                            <li>Mobile Backend APIs</li>
+                            <li>Cross-platform Dev</li>
+                            <li>App Store Publishing</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-box">
+                        <i class="fas fa-database"></i>
+                        <h4>Database</h4>
+                        <ul>
+                            <li>MySQL</li>
+                            <li>PostgreSQL</li>
+                            <li>Query Optimization</li>
+                            <li>Schema Design</li>
+                            <li>Data Migration</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-box">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Enterprise Solutions</h4>
+                        <ul>
+                            <li>HRMS Systems</li>
+                            <li>Payroll Automation</li>
+                            <li>CRM Development</li>
+                            <li>Attendance Tracking</li>
+                            <li>Leave Management</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-box">
+                        <i class="fas fa-tools"></i>
+                        <h4>DevOps & Tools</h4>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>CI/CD Pipelines</li>
+                            <li>Docker</li>
+                            <li>Linux</li>
+                            <li>Agile Methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Resume</h2>
+                    <p>Professional experience and educational background</p>
+                </div>
+
+                <div class="resume-content">
+                    <div>
+                        <h3 class="resume-title">Summary</h3>
+                        <div class="resume-item">
+                            <h4>Jasna AV</h4>
+                            <p><em>Senior PHP Developer with 5+ years of experience in full-stack development, specializing in enterprise solutions, mobile applications, and scalable web platforms.</em></p>
+                            <ul>
+                                <li>Dubai, UAE</li>
+                                <li>+971 581182681 / +91 9656657700</li>
+                                <li>jasnaav76@gmail.com</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="resume-title">Education</h3>
+                        <div class="resume-item">
+                            <h4>Master of Computer Applications (MCA)</h4>
+                            <h5>2017 - 2019</h5>
+                            <p><em>University of Calicut, Kerala</em></p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>BSc Computer Science</h4>
+                            <h5>2012 - 2015</h5>
+                            <p><em>University of Calicut, Kerala</em></p>
+                        </div>
+
+                        <h3 class="resume-title">Certifications</h3>
+                        <div class="resume-item">
+                            <ul>
+                                <li>Data Science & Machine Learning - IIIT Kottayam</li>
+                                <li>Certified PHP Laravel Developer</li>
+                                <li>Java Programming Certification</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="resume-title">Professional Experience</h3>
+                        <div class="resume-item">
+                            <h4>Freelance Full Stack Developer</h4>
+                            <h5>June 2023 - Present</h5>
+                            <p><em>Remote</em></p>
+                            <ul>
+                                <li>Delivered full-stack web applications using Laravel, Vue.js/React, improving client efficiency by 20%</li>
+                                <li>Built responsive, mobile-first UIs with scalable backend services</li>
+                                <li>Implemented CI/CD pipelines reducing deployment errors by 30%</li>
+                                <li>Conducted security audits achieving 99.9% uptime</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item">
+                            <h4>Senior PHP Developer</h4>
+                            <h5>January 2021 - Present</h5>
+                            <p><em>Sans IT Consultancy, Cochin, Kerala</em></p>
+                            <ul>
+                                <li>Engineered custom HRMS, Payroll, and CRM platforms saving 150+ man-hours monthly</li>
+                                <li>Optimized SQL queries achieving 30% performance improvement</li>
+                                <li>Integrated REST/SOAP APIs and Flutter mobile backend</li>
+                                <li>Developed employee management modules reducing admin errors by 25%</li>
+                                <li>Mentored junior developers and conducted technical workshops</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item">
+                            <h4>PHP Developer</h4>
+                            <h5>January 2020 - January 2021</h5>
+                            <p><em>MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</em></p>
+                            <ul>
+                                <li>Developed web applications using Core PHP, CodeIgniter, and MySQL</li>
+                                <li>Built HR modules reducing administrative workload by 20%</li>
+                                <li>Integrated payment gateways (Razorpay, PayPal)</li>
+                                <li>Performed unit testing and maintained project documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Projects</h2>
+                    <p>Featured projects and applications</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>HRMS Mobile App</h4>
+                            <p>Flutter-based HRMS mobile application for iOS and Android with 50+ active users. Features include attendance tracking, leave management, payroll access, and real-time notifications.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Flutter</span>
+                                <span class="portfolio-tag">iOS</span>
+                                <span class="portfolio-tag">Android</span>
+                                <span class="portfolio-tag">REST API</span>
+                                <span class="portfolio-tag">PHP</span>
+                            </div>
+                            <a href="#" class="app-badge">
+                                <i class="fab fa-app-store"></i> Available on App Store
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-img">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Enterprise HRMS System</h4>
+                            <p>Comprehensive HRMS platform automating payroll, attendance, leave management, and employee scheduling. Saved 150+ man-hours monthly.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Core PHP</span>
+                                <span class="portfolio-tag">JavaScript</span>
+                                <span class="portfolio-tag">MySQL</span>
+                                <span class="portfolio-tag">HTML5</span>
+                                <span class="portfolio-tag">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Online Blog Software</h4>
+                        <p>Modern blogging platform with rich text editor, SEO optimization, category management, comment system, and social media integration. Supports multi-author blogs with role-based permissions.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">PHP 8.3</span>
+                            <span class="portfolio-tag">Laravel 11</span>
+                            <span class="portfolio-tag">MySQL 8</span>
+                            <span class="portfolio-tag">Bootstrap 5</span>
+                            <span class="portfolio-tag">jQuery</span>                            
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/jasnaav76/OnlineBlog.git" target="_blank" class="portfolio-btn">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Patient Management System</h4>
+                    <p>Complete healthcare solution with appointment booking, medical records, prescription management, and billing. Improved patient care efficiency by 60%.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>School Management System</h4>
+                    <p>Integrated platform managing students, teachers, courses, examinations, and fee collection. Streamlined operations for 3,000+ students and 150+ staff members.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Business Analytics Dashboard</h4>
+                    <p>Real-time analytics platform with interactive charts, custom reporting, data visualization, and export capabilities. Provides actionable insights for strategic decisions.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Warehouse Inventory System</h4>
+                    <p>Advanced inventory tracking with barcode integration, stock alerts, supplier management, and automated reordering. Reduced inventory errors by 75%.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Hotel Booking Management</h4>
+                    <p>Comprehensive reservation system with room availability, online booking, guest management, and housekeeping coordination. Increased booking efficiency by 40%.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Project Management Tool</h4>
+                    <p>Collaborative project tracking platform with task assignment, time tracking, milestone management, and team communication. Boosted team productivity by 50%.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Restaurant POS System</h4>
+                    <p>Point-of-sale solution with order management, kitchen display, table reservations, and inventory tracking. Streamlined operations for multi-location restaurants.</p>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">PHP</span>
+                        <span class="portfolio-tag">Laravel</span>
+                        <span class="portfolio-tag">MySQL</span>
+                        <span class="portfolio-tag">React</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Professional Summary</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p><strong>Senior PHP Developer with 5+ years of experience</strong> building scalable web and mobile applications for international clients and mid-sized IT consultancies. Expert in full-stack development using PHP (Laravel), JavaScript (Vue.js/React), Node.js, MySQL, and PostgreSQL.</p>
+
+         <section id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Have a question or want to work together? Feel free to reach out!</p>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>jasnaav76@gmail.com</span>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+971 581182681</span>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Dubai,UAE</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
                     
-                    <p>Strong skills in REST/SOAP API integration, cron automation, HRMS, Payroll, and CRM solutions. Proven track record in optimizing application performance, securing web platforms, implementing CI/CD pipelines, and mentoring development teams.</p>
-
-                    <div class="highlight-box">
-                        <h3>Core Expertise</h3>
-                        <p>✓ Full-stack development with Laravel, Vue.js/React, Node.js<br>
-                        ✓ HRMS, Payroll & CRM system development<br>
-                        ✓ REST/SOAP API integration & Flutter mobile backends<br>
-                        ✓ Performance optimization (30% improvement achieved)<br>
-                        ✓ CI/CD pipelines & deployment automation<br>
-                        ✓ Security audits & vulnerability management<br>
-                        ✓ Team mentorship & technical leadership</p>
-                    </div>
-
-                    <p>Adept at designing responsive UIs, integrating mobile backends (Flutter), and delivering client-focused solutions that enhance productivity and reduce manual effort.</p>
-
-                    <div class="cv-download">
-                        <a href="Jasna_AV_CV.pdf" download class="btn"><i class="fas fa-file-pdf"></i> Download Full CV</a>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="highlight-box">
-                        <h3><i class="fas fa-briefcase"></i> Current Status</h3>
-                        <p><strong>Location:</strong> Dubai, UAE</p>
-                        <p><strong>Experience:</strong> 5+ Years</p>
-                        <p><strong>Visa Status:</strong> Visit Visa</p>
-                        <p><strong>Insurance:</strong> Existing</p>
-                        <p><strong>Availability:</strong> Immediate</p>
-                        <p><strong>Languages:</strong> English, Malayalam, Arabic</p>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     
-                    <div class="highlight-box" style="margin-top: 1.5rem;">
-                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                        <p><strong>MCA</strong> - University of Calicut (2019)</p>
-                        <p><strong>BSc Computer Science</strong> - University of Calicut (2015)</p>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
                     </div>
-
-                    <div class="highlight-box" style="margin-top: 1.5rem;">
-                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                        <p>• Data Science & ML - IIIT Kottayam</p>
-                        <p>• Certified PHP Laravel Developer</p>
-                        <p>• Java Programming Certification</p>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
             </div>
         </div>
     </section>
+</div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <p class="section-subtitle">Comprehensive expertise in full-stack development, APIs, databases, and modern frameworks</p>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fab fa-php"></i> PHP & Backend</h3>
-                    <ul class="skill-list">
-                        <li>PHP (Core & Advanced)</li>
-                        <li>Laravel Framework</li>
-                        <li>CodeIgniter</li>
-                        <li>WordPress Development</li>
-                        <li>RESTful API Development</li>
-                        <li>SOAP API Integration</li>
-                        <li>Cron Job Automation</li>
-                    </ul>
-                </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Frontend Development</h3>
-                    <ul class="skill-list">
-                        <li>Vue.js</li>
-                        <li>React</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>jQuery & AJAX</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Bootstrap Framework</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Backend Technologies</h3>
-                    <ul class="skill-list">
-                        <li>Node.js</li>
-                        <li>Python</li>
-                        <li>C Programming</li>
-                        <li>C++ Programming</li>
-                        <li>API Development</li>
-                        <li>Microservices</li>
-                    </ul>
-                </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Database Management</h3>
-                    <ul class="skill-list">
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>Database Optimization</li>
-                        <li>Query Performance Tuning</li>
-                        <li>Schema Design</li>
-                        <li>Data Migration</li>
-                    </ul>
-                </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
-                    <ul class="skill-list">
-                        <li>Flutter Framework</li>
-                        <li>Mobile Backend Integration</li>
-                        <li>Cross-platform Development</li>
-                        <li>Real-time Synchronization</li>
-                        <li>Mobile API Design</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-briefcase"></i> Enterprise Solutions</h3>
-                    <ul class="skill-list">
-                        <li>HRMS Development</li>
-                        <li>Payroll Systems</li>
-                        <li>CRM Solutions</li>
-                        <li>Attendance Tracking</li>
-                        <li>Leave Management</li>
-                        <li>Employee Portals</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
-                    <ul class="skill-list">
-                        <li>Git & GitHub</li>
-                        <li>GitLab</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Docker</li>
-                        <li>Linux Administration</li>
-                        <li>Agile Methodologies</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> Security & Performance</h3>
-                    <ul class="skill-list">
-                        <li>Security Audits</li>
-                        <li>Data Validation</li>
-                        <li>Vulnerability Fixing</li>
-                        <li>Performance Optimization</li>
-                        <li>Load Testing</li>
-                        <li>Code Reviews</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-credit-card"></i> Payment Integration</h3>
-                    <ul class="skill-list">
-                        <li>Razorpay Integration</li>
-                        <li>PayPal Integration</li>
-                        <li>Payment Gateway Security</li>
-                        <li>Transaction Processing</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-container">
-                <div class="experience-item">
-                    <span class="experience-date">June 2023 - Present</span>
-                    <h3 class="experience-role">Freelance Full Stack Developer</h3>
-                    <p class="experience-company">Remote</p>
-                    <ul class="experience-list">
-                        <li>Delivered full-stack web applications using Laravel, Vue.js/React, WordPress, and MySQL, improving client operational efficiency and reducing time-to-market by up to 20%</li>
-                        <li>Built responsive, mobile-first UIs integrated with scalable backend services, enhancing cross-platform user experience and engagement</li>
-                        <li>Implemented CI/CD pipelines and Git version control, increasing deployment reliability and reducing release errors by 30%</li>
-                        <li>Conducted security audits and performance tuning, achieving near 99.9% uptime and robust data protection for clients</li>
-                        <li>Managed end-to-end project lifecycle, including architecture design, coding, testing, and deployment, ensuring on-time delivery of all projects</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <span class="experience-date">January 2021 - Present</span>
-                    <h3 class="experience-role">Senior PHP Developer</h3>
-                    <p class="experience-company">Sans IT Consultancy, Cochin, Kerala</p>
-                    <ul class="experience-list">
-                        <li>Engineered custom HRMS, Payroll, and CRM platforms automating leave allotment, salary processing, and attendance tracking via cron jobs, streamlining HR operations and saving over 150 man-hours monthly</li>
-                        <li>Optimized SQL queries and refactored backend code, achieving up to 30% improvement in application performance</li>
-                        <li>Integrated third-party REST/SOAP APIs and Flutter mobile backend for seamless cross-platform data synchronization, reducing manual data entry by 40%</li>
-                        <li>Developed employee management modules including leave, shift scheduling, and tracking, enhancing operational efficiency and reducing administrative errors by 25%</li>
-                        <li>Identified and resolved security vulnerabilities through rigorous testing and data validation, ensuring compliance with industry best practices</li>
-                        <li>Mentored junior developers and conducted technical workshops, improving team proficiency and accelerating project delivery timelines</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <span class="experience-date">January 2020 - January 2021</span>
-                    <h3 class="experience-role">PHP Developer</h3>
-                    <p class="experience-company">MNF Infrastructure Pvt. Ltd., Ernakulam, Kerala</p>
-                    <ul class="experience-list">
-                        <li>Developed internal and client-facing web applications using Core PHP, CodeIgniter, and MySQL, enhancing reporting accuracy and operational workflow</li>
-                        <li>Built HR modules for employee management, leave tracking, and attendance, reducing administrative workload by 20%</li>
-                        <li>Collaborated with UI/UX teams to design responsive, user-friendly interfaces using HTML, CSS, JavaScript, and jQuery, improving user engagement and satisfaction</li>
-                        <li>Integrated payment gateways (Razorpay, PayPal) for secure, seamless financial transactions, increasing payment completion rates by 15%</li>
-                        <li>Performed unit testing, debugging, and troubleshooting to ensure application stability, reliability, and high-quality delivery standards</li>
-                        <li>Participated in code reviews and maintained comprehensive project documentation, supporting knowledge transfer and maintaining development best practices</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Enterprise solutions and scalable applications delivered for clients</p>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3 class="project-title">HRMS System</h3>
-                    <div class="project-category">Enterprise HR Solution</div>
-                    <p class="project-desc">Comprehensive HRMS platform automating HR workflows including payroll processing, attendance tracking, leave management, and employee scheduling. Saved 150+ man-hours monthly.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">PHP</span>
-                        <span class="project-tag">Laravel</span>
-                        <span class="project-tag">MySQL</span>
-                        <span class="project-tag">Cron Jobs</span>
-                    </div>
-                </div>
+            const btn = this.querySelector('.submit-btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+    </script>
 
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fab fa-wordpress"></i>
-                    </div>
-                    <h3 class="project-title">WordPress E-Commerce Sites</h3>
-                    <div class="project-category">CMS Development</div>
-                    <p class="project-desc">Custom WordPress and WooCommerce solutions for multiple clients. Including theme customization, plugin development, and payment gateway integration.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">WordPress</span>
-                        <span class="project-tag">WooCommerce</span>
-                        <span class="project-tag">PHP</span>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3 class="project-title">Stitch Online</h3>
-                    <div class="project-category">E-Commerce Platform</div>
-                    <p class="project-desc">Custom e-commerce solution for boutique fashion retail, increasing conversion rates by 25%. Features inventory management and payment integration.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">PHP</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">MySQL</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="project-title">Learning Disability Detection</h3>
-                    <div class="project-category">Machine Learning</div>
-                    <p class="project-desc">ML model using Python and scikit-learn to detect early signs of learning disabilities, achieving over 85% accuracy.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">scikit-learn</span>
-                        <span class="project-tag">ML</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-lungs"></i>
-                    </div>
-                    <h3 class="project-title">Medical AI Solutions</h3>
-                    <div class="project-category">Deep Learning</div>
-                    <p class="project-desc">Deep learning solutions for medical imaging including brain tumor and pulmonary embolism detection from MRI and CT scans.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">TensorFlow</span>
-                        <span class="project-tag">Medical AI</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- Contact Form -->
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="What's this about?">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-</html>
+   
